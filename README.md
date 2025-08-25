@@ -3,7 +3,7 @@
 Projeto da disciplina de Desenvolvimento Front-End da Pós Graduação da UFG.
 ___
 ### Palavras chave:
->HTML, CSS, Inputs, Buttons
+>HTML, CSS, Inputs, Buttons, Media Queries, Responsividade
 
 ## Grupo de Trabalho da Disciplina
 
