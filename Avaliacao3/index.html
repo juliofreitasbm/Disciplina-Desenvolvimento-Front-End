@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>AVALIAÇÃO III</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f0f0; text-align: center; padding: 20px; }
+    h1 { color: #333; }
+    button { padding: 10px 20px; margin: 10px; border: none; border-radius: 8px; background: #007bff; color: white; cursor: pointer; font-size: 16px; }
+    button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  <h1>AVALIAÇÃO III</h1>
+  
+  <button onclick="mediaAluno()">1) Média do Aluno</button>
+  <button onclick="calcularIdade()">2) Calcular Idade em 2024</button>
+  <button onclick="calcularFatorial()">3) Fatorial de um Número</button>
+  <button onclick="verificarParImpar()">4) Verificar Par ou Ímpar</button>
+  <button onclick="mostrarTabuada()">5) Tabuada</button>
+
+  <script>
+    function mediaAluno() {
+      let nome = prompt("Digite o nome do aluno:");
+      let disciplina = prompt("Digite o nome da disciplina:");
+      let nota1 = parseFloat(prompt("Digite a primeira nota:"));
+      let nota2 = parseFloat(prompt("Digite a segunda nota:"));
+      let media = (nota1 + nota2) / 2;
+      alert(`Aluno: ${nome}\nDisciplina: ${disciplina}\nNota 1: ${nota1}\nNota 2: ${nota2}\nMédia: ${media}`);
+    }
+
+    function calcularIdade() {
+      let anoNascimento = parseInt(prompt("Digite o ano de nascimento:"));
+      let idade = 2024 - anoNascimento;
+      alert(`Quem nasceu em ${anoNascimento} irá completar ${idade} anos em 2024.`);
+    }
+
+    function calcularFatorial() {
+      let numero = parseInt(prompt("Digite um número para calcular o fatorial:"));
+      let fatorial = 1;
+      for (let i = 1; i <= numero; i++) {
+        fatorial *= i;
+      }
+      alert(`O fatorial de ${numero} é ${fatorial}.`);
+    }
+
+    function verificarParImpar() {
+      let num = parseInt(prompt("Digite um número:"));
+      let resultado = (num % 2 === 0) ? "par" : "ímpar";
+      alert(`O número ${num} que foi digitado é ${resultado}!`);
+    }
+
+    function mostrarTabuada() {
+      let n = parseInt(prompt("Digite um número para ver sua tabuada:"));
+      let tabuada = "";
+      for (let i = 1; i <= 10; i++) {
+        tabuada += `${n} x ${i} = ${n * i}\n`;
+      }
+      alert(`Tabuada do ${n}:\n${tabuada}`);
+    }
+  </script>
+</body>
+</html>
