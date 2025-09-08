@@ -1,123 +1,129 @@
 class Edificio {
   constructor(nome, endereco, bairro, cidade, uf) {
-    this.nome = nome;
-    this.endereco = endereco;
-    this.bairro = bairro;
-    this.cidade = cidade;
-    this.uf = uf;
+    this._nome = nome;
+    this._endereco = endereco;
+    this._bairro = bairro;
+    this._cidade = cidade;
+    this._uf = uf;
   }
-  
+
+  get nome() { return this._nome; }
+  set nome(v) { this._nome = v; }
+
+  get endereco() { return this._endereco; }
+  set endereco(v) { this._endereco = v; }
+
+  get bairro() { return this._bairro; }
+  set bairro(v) { this._bairro = v; }
+
+  get cidade() { return this._cidade; }
+  set cidade(v) { this._cidade = v; }
+
+  get uf() { return this._uf; }
+  set uf(v) { this._uf = v; }
+
   mostrarDadosEdificio() {
-    console.log(`Nome: ${this.nome}`);
-    console.log(`Endereço: ${this.endereco}`);
-    console.log(`Bairro: ${this.bairro}`);
-    console.log(`Cidade: ${this.cidade}`);
-    console.log(`UF: ${this.uf}`);
+    console.log(`Edifício: ${this._nome}`);
+    console.log(`Endereço: ${this._endereco}`);
+    console.log(`Bairro: ${this._bairro}`);
+    console.log(`Cidade/UF: ${this._cidade}/${this._uf}`);
   }
 }
 
-class Apartamento {
-  constructor(numero, edificio, andar, bloco, moradores) {
-    this.numero = numero;
-    this.edificio = edificio;
-    this.andar = andar;
-    this.bloco = bloco;
-    this.moradores = moradores;
-  }
-
-  mostrarDadosApartamento() {
-    console.log(`Número: ${this.numero}`);
-    console.log(`Edifício: ${this.edificio}`);
-    console.log(`Andar: ${this.andar}`);
-    console.log(`Bloco: ${this.bloco}`);
-    console.log(`Moradores: ${this.moradores.join(", ")}`);
-  }
-};
-
 class Pessoa {
   constructor(nome, cpf) {
-    this.nome = nome;
-    this.cpf = cpf;
+    this._nome = nome;
+    this._cpf = cpf;
   }
 
+  get nome() { return this._nome; }
+  set nome(v) { this._nome = v; }
+
+  get cpf() { return this._cpf; }
+  set cpf(v) { this._cpf = v; }
+
   mostrarDadosPessoa() {
-    console.log(`Nome: ${this.nome}`);
-    console.log(`CPF: ${this.cpf}`);
+    console.log(`Nome: ${this._nome}`);
+    console.log(`CPF: ${this._cpf}`);
   }
 }
 
 class Morador extends Pessoa {
   constructor(nome, cpf, codigoAcesso) {
     super(nome, cpf);
-    this.codigoAcesso = codigoAcesso;
+    this._codigoAcesso = codigoAcesso;
   }
+
+  get codigoAcesso() { return this._codigoAcesso; }
+  set codigoAcesso(v) { this._codigoAcesso = v; }
+
   mostrarDadosMorador() {
     super.mostrarDadosPessoa();
-    console.log(`Código de Acesso: ${this.codigoAcesso}`);
+    console.log(`Código de Acesso: ${this._codigoAcesso}`);
+  }
+}
+
+class Apartamento {
+  constructor(numero, edificio, andar, bloco, morador) {
+    this._numero = numero;
+    this._edificio = edificio;   // objeto Edificio
+    this._andar = andar;
+    this._bloco = bloco;
+    this._morador = morador;     // objeto Morador (um único)
+  }
+
+  get numero() { return this._numero; }
+  set numero(v) { this._numero = v; }
+
+  get edificio() { return this._edificio; }
+  set edificio(v) { this._edificio = v; }
+
+  get andar() { return this._andar; }
+  set andar(v) { this._andar = v; }
+
+  get bloco() { return this._bloco; }
+  set bloco(v) { this._bloco = v; }
+
+  get morador() { return this._morador; }
+  set morador(v) { this._morador = v; }
+
+  mostrarDadosApartamento() {
+    console.log(`Apartamento: ${this._numero} | Andar: ${this._andar} | Bloco: ${this._bloco}`);
+    console.log(`Edifício: ${this._edificio.nome}`);
+    console.log(`--- Morador ---`);
+    this._morador.mostrarDadosMorador();
   }
 }
 
 class Main {
   static main() {
-    const edificio = new Edificio("Residencial Sol Nascente", "Rua das Flores, 123", "Centro", "São Paulo", "SP");
-    edificio.mostrarDadosEdificio();
-    console.log("-----");
+    const edificio = new Edificio(
+      "Residencial Sol Nascente",
+      "Rua das Flores, 123",
+      "Centro",
+      "São Paulo",
+      "SP"
+    );
 
-    const moradores = [
-      new Morador("Ana Silva", "123.456.789-00", "A1B2C3"),
-      new Morador("Bruno Souza", "987.654.321-00", "D4E5F6")
-    ];
-    moradores.forEach(morador => morador.mostrarDadosMorador());
-    console.log("-----");
+    // 5 moradores (um para cada apto)
+    const m1 = new Morador("Ana Silva",   "123.456.789-00", "A1B2C3");
+    const m2 = new Morador("Bruno Souza", "987.654.321-00", "D4E5F6");
+    const m3 = new Morador("Carla Lima",  "123.456.789-01", "G7H8I9");
+    const m4 = new Morador("Diego Rocha", "123.456.789-02", "J1K2L3");
+    const m5 = new Morador("Eva Prado",   "987.654.321-02", "M4N5O6");
 
-    const apartamento = new Apartamento(101, edificio.nome, 1, "A", moradores.map(m => m.nome));
-    apartamento.mostrarDadosApartamento();
-    console.log("-----");
+    // 5 apartamentos (cada um com UM morador)
+    const a1 = new Apartamento(101, edificio, 1, "A", m1);
+    const a2 = new Apartamento(102, edificio, 1, "A", m2);
+    const a3 = new Apartamento(201, edificio, 2, "A", m3);
+    const a4 = new Apartamento(202, edificio, 2, "A", m4);
+    const a5 = new Apartamento(301, edificio, 3, "B", m5);
 
-    const moradores2 = [
-      new Morador("Bana Silva", "123.456.789-01", "B1B2C3"),
-    ];
-    moradores2.forEach(morador => morador.mostrarDadosMorador());
-    console.log("-----");
-
-    const apartamento2 = new Apartamento(102, edificio.nome, 1, "A", moradores2.map(m => m.nome));
-    apartamento2.mostrarDadosApartamento();
-    console.log("-----");
-
-    const moradores3 = [
-      new Morador("Cana Silva", "123.456.789-02", "C1B2C3"),
-      new Morador("Cruno Souza", "987.654.321-02", "C4E5F6")
-
-    ];
-    moradores3.forEach(morador => morador.mostrarDadosMorador());
-    console.log("-----");
-
-    const apartamento3 = new Apartamento(103, edificio.nome, 1, "A", moradores3.map(m => m.nome));
-    apartamento3.mostrarDadosApartamento();
-    console.log("-----");
-
-    const moradores4 = [
-      new Morador("Dana Silva", "123.456.789-03", "D1B2C3"),
-    ];
-    moradores3.forEach(morador => morador.mostrarDadosMorador());
-    console.log("-----");
-
-    const apartamento4 = new Apartamento(104, edificio.nome, 1, "A", moradores4.map(m => m.nome));
-    apartamento4.mostrarDadosApartamento();
-    console.log("-----");
-
-    const moradores5 = [
-      new Morador("Eana Silva", "123.456.789-04", "E1B2C3"),
-      new Morador("Eruno Souza", "987.654.321-04", "E4E5F6")
-
-    ];
-    moradores5.forEach(morador => morador.mostrarDadosMorador());
-    console.log("-----");
-
-    const apartamento5 = new Apartamento(105, edificio.nome, 1, "A", moradores5.map(m => m.nome));
-    apartamento5.mostrarDadosApartamento();
-    console.log("-----");
-
-
+    [a1, a2, a3, a4, a5].forEach(ap => {
+      ap.mostrarDadosApartamento();
+      console.log("-----");
+    });
   }
 }
+
+Main.main();
