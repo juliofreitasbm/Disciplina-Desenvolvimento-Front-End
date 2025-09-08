@@ -24,7 +24,7 @@ function calcular() {
       break;
     case '4':
       if (num2 === 0) {
-        document.getElementById("resultado").innerText = "Divisão por zero não é permitida.";
+        alert("Divisão por zero não é permitida.");
         return;
       }
       resultado = num1 / num2;

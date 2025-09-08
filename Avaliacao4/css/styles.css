@@ -1,0 +1,15 @@
+body {
+  background-color: #f8f9fa; /* fundo cinza claro */
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* Container personalizado */
+.container-custom {
+  background: #ffffff;            /* fundo branco */
+  border-radius: 12px;            /* cantos arredondados */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* leve sombra */
+  padding: 2rem;
+  max-width: 700px;
+  margin: 2rem auto;
+  text-align: center;
+}

@@ -4,49 +4,56 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Calculadora</title>
+  <title>Tabuada</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-  <h1 class="p-3">Calculadora</h1>
+  <div class="container-custom container d-flex flex-column justify-content-start align-items-center pt-5">
 
-  <div class="row p-3 align-items-end">
-    <!-- Número 1 -->
-    <div class="col-md-2">
-      <label for="number1" class="form-label">Número 1</label>
-      <input type="text" class="form-control" id="number1" placeholder="Número 1">
+    <h1>Tabuada</h1>
+
+    <div class="row">
+      <!-- Número 1 -->
+      <div class="col-md-4">
+        <label for="number1" class="form-label">Número 1</label>
+        <input type="text" class="form-control" id="number1" placeholder="Número 1">
+      </div>
+
+      <!-- Operador -->
+      <div class="col-md-4">
+        <label for="operador" class="form-label">Operador</label>
+        <select class="form-select" id="operador" aria-label="Operador">
+          <option selected>Selecione</option>
+          <option value="1">Adição ( + )</option>
+          <option value="2">Subtração ( - )</option>
+          <option value="3">Multiplicação ( * )</option>
+          <option value="4">Divisão ( / )</option>
+        </select>
+      </div>
+
+      <!-- Número 2 -->
+      <div class="col-md-4">
+        <label for="number2" class="form-label">Número 2</label>
+        <input type="text" class="form-control" id="number2" placeholder="Número 2">
+      </div>
+
     </div>
 
-    <!-- Operador -->
-    <div class="col-md-2">
-      <label for="operador" class="form-label">Operador</label>
-      <select class="form-select" id="operador" aria-label="Operador">
-        <option selected>Selecione</option>
-        <option value="1">Adição ( + )</option>
-        <option value="2">Subtração ( - )</option>
-        <option value="3">Multiplicação ( * )</option>
-        <option value="4">Divisão ( / )</option>
-      </select>
+
+    <!-- Botão Calcular -->
+    <div class="pt-4 p-3 d-flex flex-wrap justify-content-center align-items-center gap-3 text-center">
+      <!-- Botão Calcular -->
+      <div>
+        <button type="button" class="btn btn-primary" onclick="calcular()">Calcular</button>
+      </div>
+
+      <!-- Resultado -->
+      <p class="mb-0">Resultado: <span id="resultado">0</span></p>
+
     </div>
-
-    <!-- Número 2 -->
-    <div class="col-md-2">
-      <label for="number2" class="form-label">Número 2</label>
-      <input type="text" class="form-control" id="number2" placeholder="Número 2">
-    </div>
-
-    <!-- Resultado -->
-    <p class="col-md-1">Resultado: <span id="resultado">0</span></p>
-  </div>
-
-  <!-- Botão Calcular -->
-  <div class="p-3 justify-content-center">
-    <div class="col-md-12">
-      <button type="button" class="btn btn-primary" onclick="calcular()">Calcular</button>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"></script>
