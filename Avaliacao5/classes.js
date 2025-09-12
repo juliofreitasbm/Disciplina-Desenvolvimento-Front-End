@@ -132,15 +132,24 @@ class Main {
     // Criando moradores
     const morador1 = new Morador('Julio Cesar', '0123456789', 'A1001');
     const morador2 = new Morador('Paulo', '9876543210', 'B2002');
+    const morador3 = new Morador("Aylla",  "12345678901", "G7H8I9");
+    const morador4 = new Morador("Bruno", "12345678902", "J1K2L3");
+    const morador5 = new Morador("Fernanda",   "98765432102", "M4N5O6");
+    const morador6 = new Morador("Lucas",   "98765432102", "M4N5O6");
 
 
     // Criando apartamentos do mesmo edifício
     const apt1 = new Apartamento(101, 1, 'A', edif, morador1);
     const apt2 = new Apartamento(201, 2, 'A', edif, morador2);
+    const apt3 = new Apartamento(201, 2, 'B', edif, morador3);
+    const apt4 = new Apartamento(202, 2, 'A', edif, morador4);
+    const apt5 = new Apartamento(301, 3, 'B', edif, morador5);
+    const apt6 = new Apartamento(302, 3, 'B', edif, morador6);
 
-    // Mostrando apartamentos
-    apt1.mostrarDadosApartamento();
-    apt2.mostrarDadosApartamento();
+    [apt1, apt2, apt3, apt4, apt5, apt6].forEach(ap => {
+      ap.mostrarDadosApartamento();
+      console.log("-----");
+    });
   }
 }
 
